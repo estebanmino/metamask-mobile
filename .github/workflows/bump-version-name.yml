@@ -3,9 +3,10 @@ on:
   push:
     branches:
       - develop
-  [create, pull_request]:
+  pull_request:
     branches:
       - develop
+    types: [opened]
 jobs:
   bump-version-name:
     runs-on: ubuntu-latest
@@ -58,7 +59,7 @@ jobs:
 
         # The arguments for the `git rm` command (see the paragraph below for more info)
         # Default: ''
-        # remove: './dir/ol d_file.js'
+        # remove: './dir/old_file.js'
 
         # Whether to use the --signoff option on `git commit` (only `true` and `false` are accepted)
         # Default: false
