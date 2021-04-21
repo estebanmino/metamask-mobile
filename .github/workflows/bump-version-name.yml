@@ -16,11 +16,14 @@ jobs:
         GITHUB_CONTEXT: ${{ toJSON(github) }}
       run: echo "$GITHUB_CONTEXT"
     - name: Bump script
+      env:
+        GITHUB_CONTEXT: ${{ toJSON(github) }}
+        BASE_REF: ${{ github.base_ref }}
       run: |
         echo "variables"
         echo github.event.pull_request.head.ref
-        echo "${{ github.base_ref }}"
-        ./scripts/bump-version.sh  "${GITHUB_REF}"
+        echo "$BASE_REF"
+        ./scripts/bump-version.sh  "$BASE_REF"
         git diff
     - uses: EndBug/add-and-commit@v7
       with:
