@@ -3,7 +3,10 @@ on:
   push:
     branches:
       - develop
-jobs:
+  pull_request:
+    branches:
+      - develop
+  jobs:
   bump-version-name:
     runs-on: ubuntu-latest
     steps:
