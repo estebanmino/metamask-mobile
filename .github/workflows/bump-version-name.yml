@@ -11,11 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJSON(github) }}
+      run: echo "$GITHUB_CONTEXT"
     - name: Bump script
       run: |
         echo "variables"
         echo github.event.pull_request.head.ref
-        echo "${GITHUB_REF}"
+        echo "${github.head_ref}"
         echo "${{ github.base_ref }}"
         ./scripts/bump-version.sh  "${GITHUB_REF}"
         git diff
