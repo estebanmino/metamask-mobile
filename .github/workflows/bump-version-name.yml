@@ -18,11 +18,11 @@ jobs:
         BASE_REF: ${{ github.base_ref }}
         HEAD_REF: ${{ github.head_ref }}
       run: |
-        ./scripts/bump-version.sh  "$HEAD_REF"
+        ./scripts/bump-version.sh "$HEAD_REF"
         git diff
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add .
         git commit -m "Bump version name"
-        git push
-        
+        git push origin "$HEAD_REF"
+
