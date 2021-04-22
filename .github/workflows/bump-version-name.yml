@@ -6,7 +6,7 @@ on:
   pull_request:
     branches:
       - develop
-    types: [opened]
+    # types: [opened]
 jobs:
   bump-version-name:
     runs-on: ubuntu-latest
@@ -24,5 +24,5 @@ jobs:
         git config user.email github-actions@github.com
         git add .
         git commit -m "Bump version name"
-        git push origin $HEAD_REF"
+        git push origin $HEAD_REF
 
