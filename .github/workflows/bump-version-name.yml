@@ -1,11 +1,12 @@
 name: Bump version name
 on:
-  push:
-    branches:
-      - develop
+  # push:
+  #   branches:
+  #     - develop
   pull_request:
     branches:
       - develop
+      - main
     types: [opened]
 jobs:
   bump-version-name:
@@ -25,4 +26,3 @@ jobs:
         git add .
         git commit -m "Bump version name"
         git push origin HEAD:"$HEAD_REF" --force
-
